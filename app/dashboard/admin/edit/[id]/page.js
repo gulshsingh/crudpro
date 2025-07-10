@@ -3,8 +3,7 @@
 import { useParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-// Dummy user profile images based on ID (simulate assigned staff)
-const humanImages = {
+const pics= {
   1: "https://randomuser.me/api/portraits/men/32.jpg",
   2: "https://randomuser.me/api/portraits/women/44.jpg",
 };
@@ -14,22 +13,20 @@ export default function EditCarPage() {
   const router = useRouter();
   const [car, setCar] = useState(null);
 
-  useEffect(() => {
-    // Simulate fetch from API
-    const carData = {
+  useEffect(() => {    const carData = {
       1: {
-        id: 1,
-        name: "Baleno",
-        brand: "Maruti",
+                     id: 1,
+                          name: "Baleno",
+                         brand: "Maruti",
         image: "https://images.pexels.com/photos/170811/pexels-photo-170811.jpeg",
         price_per_day: 1800,
         status: "pending",
       },
       2: {
         id: 2,
-        name: "i20",
-        brand: "Hyundai",
-        image: "https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg",
+                  name: "i20",
+                 brand: "Hyundai",
+                    image: "https://images.pexels.com/photos/358070/pexels-photo-358070.jpeg",
         price_per_day: 2000,
         status: "approved",
       },
@@ -40,7 +37,6 @@ export default function EditCarPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // TODO: submit to backend
     alert("Car updated!");
     router.push("/dashboard/admin");
   };
@@ -54,7 +50,6 @@ export default function EditCarPage() {
       </h1>
 
       <div className="flex gap-6 items-start mb-6">
-        {/* Car Image Preview */}
         <div className="w-1/2">
           <img
             src={car.image}
@@ -64,10 +59,9 @@ export default function EditCarPage() {
           <p className="text-sm text-gray-500 mt-2 text-center">Car Image Preview</p>
         </div>
 
-        {/* Assigned Human Image (Owner/Staff) */}
         <div className="w-1/2 text-center">
           <img
-            src={humanImages[car.id]}
+            src={pics[car.id]}
             alt="Manager"
             className="w-24 h-24 rounded-full mx-auto border"
           />
@@ -99,6 +93,8 @@ export default function EditCarPage() {
         <div>
           <label className="block text-sm font-medium mb-1">Price per Day (₹)</label>
           <input
+
+          
             type="number"
             defaultValue={car.price_per_day}
             className="w-full border p-2 rounded"
@@ -107,9 +103,11 @@ export default function EditCarPage() {
         </div>
 
         <div className="col-span-2">
+
           <label className="block text-sm font-medium mb-1">Image URL</label>
           <input
             type="url"
+
             defaultValue={car.image}
             className="w-full border p-2 rounded"
             placeholder="Image URL"
@@ -120,10 +118,15 @@ export default function EditCarPage() {
           <label className="block text-sm font-medium mb-1">Status</label>
           <select
             defaultValue={car.status}
+
             className="w-full border p-2 rounded"
+
           >
             <option value="approved">Approved</option>
             <option value="rejected">Rejected</option>
+
+
+
             <option value="pending">Pending</option>
           </select>
         </div>
@@ -131,9 +134,13 @@ export default function EditCarPage() {
         <div className="col-span-2 mt-4">
           <button
             type="submit"
+
+
+
             className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700"
           >
-            Save Changes
+            Save
+             Changes
           </button>
         </div>
       </form>
